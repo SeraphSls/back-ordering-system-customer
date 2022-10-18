@@ -1,20 +1,16 @@
-package br.com.orderring.system.customer.request;
+package br.com.ordering.system.customer.request;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 public class CustomerRequest {
 
     private String name;
-
+    private String cpf;
     private String email;
     private String state;
-
     private String city;
-
     private String cep;
-
     private String street;
-
     private String number;
 
     public String getName() {
@@ -72,6 +68,13 @@ public class CustomerRequest {
     public void setNumber(String number) {
         this.number = number;
     }
+    public String getCpf() {
+        return cpf;
+    }
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
 
 
 }
