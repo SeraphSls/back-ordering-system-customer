@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+  mongodb:
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_DATABASE=dura-shop
+      - MONGODB_USER=admin
+      - MONGODB_PASS=admin
+    volumes:
+      - "mongodb-data:/data/db"
+  # mongoclient:
+  #   container_name: mongoclient
+  #   ports:
+  #     - "4000:3000"
+  #   image: mongoclient/mongoclient:latest
+
+volumes:
+  mongodb-data: {}
