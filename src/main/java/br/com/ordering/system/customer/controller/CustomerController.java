@@ -1,13 +1,13 @@
 package br.com.ordering.system.customer.controller;
 
 
+import br.com.ordering.system.customer.domain.CustomerDTO;
+import br.com.ordering.system.customer.request.CustomerRequest;
 import br.com.ordering.system.customer.service.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CustomerController {
@@ -16,13 +16,15 @@ public class CustomerController {
     private CustomerRepository repository;
 
 
-    @GetMapping(value = "/")
+    @PostMapping(value = "/insert")
+    public ResponseEntity<Object> insertCustomer(@RequestBody CustomerRequest customer){
+        repository.insert(new CustomerDTO(customer));
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/recover")
     public ResponseEntity<Object> getCustomer(){
-
-        repository.findAll();
-
-
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(repository.findAll(), HttpStatus.OK );
     }
 
 }
