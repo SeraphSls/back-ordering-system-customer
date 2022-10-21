@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
+
 @RestController
 public class CustomerController {
 
@@ -26,13 +28,20 @@ public class CustomerController {
                 customer.getCity(),
                 customer.getCep(),
                 customer.getStreet(),
-                customer.getNumber() ));
+                customer.getNumber()));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/recover")
     public ResponseEntity<Object> getCustomer(){
         return new ResponseEntity<>( repository.findAll(),HttpStatus.OK);
+    }
+
+
+    @PutMapping(value = "/update")
+    public ResponseEntity<Object> updateCustomer(@RequestBody CustomerRequest customer){
+
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
 }
