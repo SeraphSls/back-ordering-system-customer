@@ -40,7 +40,15 @@ public class CustomerController {
 
     @PutMapping(value = "/update")
     public ResponseEntity<Object> updateCustomer(@RequestBody CustomerRequest customer){
-
+        repository.save(new CustomerDTO(
+                customer.getCpf(),
+                customer.getName(),
+                customer.getEmail(),
+                customer.getState(),
+                customer.getCity(),
+                customer.getCep(),
+                customer.getStreet(),
+                customer.getNumber()));
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
