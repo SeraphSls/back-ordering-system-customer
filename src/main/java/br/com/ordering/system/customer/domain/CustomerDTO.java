@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 @Document("customer")
 public class CustomerDTO {
 
-    @MongoId(FieldType.STRING)
+    @MongoId(FieldType.OBJECT_ID)
     private String cpf;
     private String name;
     private String email;
@@ -31,6 +31,7 @@ public class CustomerDTO {
         this.street = street;
         this.number = number;
     }
+
 
 
 
