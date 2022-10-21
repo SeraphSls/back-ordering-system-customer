@@ -21,16 +21,18 @@ public class CustomerDTO {
     private String street;
     private String number;
 
-    public CustomerDTO(CustomerRequest customer) {
-        this.cpf = customer.getCpf();
-        this.name = customer.getName();
-        this.email = customer.getEmail();
-        this.state = customer.getState();
-        this.city = customer.getCity();
-        this.cep = customer.getCep();
-        this.street = customer.getStreet();
-        this.number = customer.getNumber();
+    public CustomerDTO(String cpf, String name, String email, String state, String city, String cep, String street, String number) {
+        this.cpf = cpf;
+        this.name = name;
+        this.email = email;
+        this.state = state;
+        this.city = city;
+        this.cep = cep;
+        this.street = street;
+        this.number = number;
     }
+
+
 
 
 }

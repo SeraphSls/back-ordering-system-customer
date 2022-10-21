@@ -18,13 +18,21 @@ public class CustomerController {
 
     @PostMapping(value = "/insert")
     public ResponseEntity<Object> insertCustomer(@RequestBody CustomerRequest customer){
-        repository.insert(new CustomerDTO(customer));
+        repository.insert(new CustomerDTO(
+                customer.getCpf(),
+                customer.getName(),
+                customer.getEmail(),
+                customer.getState(),
+                customer.getCity(),
+                customer.getCep(),
+                customer.getStreet(),
+                customer.getNumber() ));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/recover")
     public ResponseEntity<Object> getCustomer(){
-        return new ResponseEntity<>(repository.findAll(), HttpStatus.OK );
+        return new ResponseEntity<>( repository.findAll(),HttpStatus.OK);
     }
 
 }
